@@ -1,4 +1,3 @@
 # Plugins
-The Unethical plugins are actively maintained and should be working.
 
-The Hoot plugins are not maintained, they were created purely to experiment with and should be deemed unstable.
+If you find a bug you can contact me on discord Eso#9293
