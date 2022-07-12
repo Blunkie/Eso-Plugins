@@ -1,13 +1,6 @@
 rootProject.name = "unethicalite-plugins"
 
-include("packetutils")
-include("prayerflicker")
-include("automationapi")
-include("autovorkath")
-include("autovorkathprayer")
-include("eso-pestcontrol")
 include("eso-magic")
-include("eso-nmz")
 
 for (project in rootProject.children) {
     project.apply {

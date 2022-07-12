@@ -12,6 +12,7 @@ import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.unethicalite.api.entities.NPCs;
+import net.unethicalite.api.game.Game;
 import net.unethicalite.api.items.Inventory;
 import net.unethicalite.api.magic.Magic;
 import net.unethicalite.api.magic.SpellBook;
@@ -21,25 +22,21 @@ import javax.inject.Inject;
 
 @Extension
 @PluginDescriptor(
-		name = "Eso Magic",
-		description = "Curse-Alch plugin",
+		name = "Eso Stun Alch",
 		enabledByDefault = false
 )
 @Slf4j
 public class EsoMagicPlugin extends Plugin
 {
 	@Inject
-	private Client client;
-
-	@Inject
 	private EsoMagicConfig config;
 
-	@Inject
-	private ClientThread clientThread;
-
 	private NPC targetNpc;
+
 	private Item targetItem;
+
 	private boolean doAlch;
+
 	private int tickDelay;
 
 	@Override
@@ -68,6 +65,7 @@ public class EsoMagicPlugin extends Plugin
 		if (noRunesLeft())
 		{
 			log.info("No runes");
+			Game.logout();
 			return;
 		}
 
