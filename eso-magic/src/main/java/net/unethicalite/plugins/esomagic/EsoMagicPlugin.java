@@ -2,11 +2,9 @@ package net.unethicalite.plugins.esomagic;
 
 import com.google.inject.Provides;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.Client;
 import net.runelite.api.Item;
 import net.runelite.api.NPC;
 import net.runelite.api.events.GameTick;
-import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
@@ -31,31 +29,21 @@ public class EsoMagicPlugin extends Plugin
 	@Inject
 	private EsoMagicConfig config;
 
-	private NPC targetNpc;
-
-	private Item targetItem;
-
 	private boolean doAlch;
 
 	private int tickDelay;
 
 	@Override
-	protected void startUp()
-	{
-		resetVariables();
-	}
-
-	@Override
 	protected void shutDown()
 	{
-		resetVariables();
+		doAlch = false;
 	}
 
 	@Subscribe
 	private void onGameTick(GameTick e)
 	{
-		targetNpc = NPCs.getNearest(config.npcId());
-		targetItem = Inventory.getFirst(config.itemId());
+		NPC targetNpc = NPCs.getNearest(config.npcId());
+		Item targetItem = Inventory.getFirst(config.itemId());
 
 		if (targetNpc == null || targetItem == null)
 		{
@@ -100,14 +88,6 @@ public class EsoMagicPlugin extends Plugin
 		}
 
 		return !Inventory.contains("Soul rune");
-	}
-
-	private void resetVariables()
-	{
-		targetNpc = null;
-		targetItem = null;
-		doAlch = false;
-		tickDelay = 0;
 	}
 
 	@Provides

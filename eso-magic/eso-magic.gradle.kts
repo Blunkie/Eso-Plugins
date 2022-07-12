@@ -1,7 +1,7 @@
 version = "0.0.1"
 
 project.extra["PluginName"] = "Eso Magic"
-project.extra["PluginDescription"] = "Curse-Alch plugin"
+project.extra["PluginDescription"] = "Stun-Alch plugin"
 
 tasks {
     jar {
