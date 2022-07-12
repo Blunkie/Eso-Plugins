@@ -52,8 +52,11 @@ public class EsoMagicPlugin extends Plugin
 
 		if (noRunesLeft())
 		{
-			log.info("No runes");
-			Game.logout();
+			if (config.logoutNoRunes())
+			{
+				Game.logout();
+				return;
+			}
 			return;
 		}
 

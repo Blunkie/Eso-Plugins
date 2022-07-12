@@ -55,10 +55,21 @@ public interface EsoMagicConfig extends Config
             keyName = "npcId",
             name = "Npc",
             description = "Id of npc",
-            position = 1
+            position = 2
     )
     default int npcId()
     {
         return 0;
+    }
+
+    @ConfigItem(
+            keyName = "logoutNoRunes",
+            name = "Logout when out of runes",
+            description = "",
+            position = 3
+    )
+    default boolean logoutNoRunes()
+    {
+        return true;
     }
 }
